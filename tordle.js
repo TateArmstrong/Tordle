@@ -15,24 +15,30 @@ document.onkeydown = function (e) {
 
 function handleKeyEvent(e) {
     const input = String.fromCharCode(e.keyCode)
-    if(currentLetter < 0){
-        currentLetter = 0;
-        console.log(activeWord + " at " + currentLetter);
-        return;
+    // If we are at the start
+    if(currentLetter === 0){
+        if(/[A-Za-z]/.test(input)){
+            activeWord = setCharAt(activeWord, currentLetter, input);
+            currentLetter++;
+        }
     }
-    if(e.keyCode === '8' && currentLetter !== 0){
-        currentLetter--;
-        activeWord = setCharAt(activeWord, currentLetter, ' ');
+    else if(currentLetter === 5){
+        if(e.keyCode === 8){
+            currentLetter--;
+            activeWord = setCharAt(activeWord, currentLetter, ' ');
+        }
     }
-    if(currentLetter === 5){
-        currentLetter = 5;
-        console.log(activeWord + " at " + currentLetter);
-        return;
+    else {
+        if(/[A-Za-z]/.test(input)){
+            activeWord = setCharAt(activeWord, currentLetter, input);
+            currentLetter++;
+        }
+        if(e.keyCode === 8){
+            currentLetter--;
+            activeWord = setCharAt(activeWord, currentLetter, ' ');
+        }
     }
-    if(/[A-Za-z]/.test(input)){
-        activeWord = setCharAt(activeWord, currentLetter, input);
-        currentLetter++;
-    }
+    
     console.log(activeWord + " at " + currentLetter);
     updateActiveRow();
 }
