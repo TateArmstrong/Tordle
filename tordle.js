@@ -1,6 +1,7 @@
 var activeRow = document.getElementById('row1');
 
-var activeWord = '_____';
+var activeWord = '     ';
+var answer = 'SALET';
 var currentLetter = 0;
 
 function setCharAt(str,index,chr) {
@@ -9,13 +10,11 @@ function setCharAt(str,index,chr) {
 }
 
 document.onkeydown = function (e) {
-    console.log(e.key);
     handleKeyEvent(e);
 };
 
 function handleKeyEvent(e) {
     const input = String.fromCharCode(e.keyCode)
-    // If we are at the start
     if(currentLetter === 0){
         if(/[A-Za-z]/.test(input)){
             activeWord = setCharAt(activeWord, currentLetter, input);
@@ -39,8 +38,12 @@ function handleKeyEvent(e) {
         }
     }
     
-    console.log(activeWord + " at " + currentLetter);
     updateActiveRow();
+}
+
+function isValidWord(){
+    if(activeWord.includes(' ')){return false;}
+    
 }
 
 function updateActiveRow(){
