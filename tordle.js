@@ -6,6 +6,7 @@ var info = document.getElementById('info');
 var activeWord = '     '; 
 var answer = 'SALET';
 var currentLetter = 0;
+var currentRow = 1;
 
 function setCharAt(str,index,chr) {
     if(index > str.length-1) return str;
@@ -22,7 +23,13 @@ function handleKeyEvent(e) {
 
     if(e.keyCode === 13){
         if(isValidWord()){
-            info.innerText = 'YOU WIN!!!'
+            if(activeWord === answer){
+                info.innerText = 'YOU WIN!!!'
+            }
+            else {
+                console.log('next row called');
+                nextRow();
+            }
         }
     }
     if(currentLetter === 0){
@@ -61,6 +68,7 @@ function isValidWord(){
     }
     else {
         info.innerText = 'Not a valid word. ';
+        console.log(activeWord);
         return false;
     }
 }
@@ -71,4 +79,15 @@ function updateActiveRow(){
     for(var i = 0; i < rowChildren.length; i++){
         rowChildren[i].innerText = activeWord.charAt(i);
     }
+}
+
+function nextRow(){
+    if(currentRow === 6){
+        info.innerText = 'You Lose. ';
+        return;
+    }
+    currentRow++;
+    activeRow = document.getElementById('row' + currentRow);
+    activeWord = '     ';
+    currentLetter = 0;
 }
