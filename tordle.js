@@ -25,9 +25,11 @@ function handleKeyEvent(e) {
         if(isValidWord()){
             if(activeWord === answer){
                 info.innerText = 'YOU WIN!!!'
+                setColors();
             }
             else {
                 console.log('next row called');
+                setColors();
                 nextRow();
             }
         }
@@ -68,13 +70,12 @@ function isValidWord(){
     }
     else {
         info.innerText = 'Not a valid word. ';
-        console.log(activeWord);
         return false;
     }
 }
 
 function updateActiveRow(){
-    var rowChildren = activeRow.children
+    var rowChildren = activeRow.children;
     
     for(var i = 0; i < rowChildren.length; i++){
         rowChildren[i].innerText = activeWord.charAt(i);
@@ -90,4 +91,30 @@ function nextRow(){
     activeRow = document.getElementById('row' + currentRow);
     activeWord = '     ';
     currentLetter = 0;
+}
+
+// TO-DO: Only show 1 hint (color) per letter. Ex: If your guess has
+// 2 'L's, only show the hint for the first 'L' and not the second. 
+function setColors(){
+    var colorOrder = []
+
+    // Set the color order of the word. 
+    for(var i = 0; i < activeWord.length; i++){
+        if(activeWord[i] === answer[i]){
+            colorOrder.push('green');
+        }
+        else if(answer.includes(activeWord[i])){
+            // Yellow color. 
+            colorOrder.push('#afaf01');
+        }
+        else {
+            colorOrder.push('gray');
+        }
+    }
+
+    // Loop through children of active row and set the colors. 
+    var rowChildren = activeRow.children;
+    for(var i = 0; i < rowChildren.length; i++){
+        rowChildren[i].style.backgroundColor = colorOrder[i];
+    }
 }
