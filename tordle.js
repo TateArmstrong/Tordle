@@ -97,11 +97,16 @@ function nextRow(){
 // 2 'L's, only show the hint for the first 'L' and not the second. 
 function setColors(){
     var colorOrder = []
+    var usedLetters = []
 
     // Set the color order of the word. 
     for(var i = 0; i < activeWord.length; i++){
+
         if(activeWord[i] === answer[i]){
             colorOrder.push('green');
+        }
+        else if(usedLetters.includes(activeWord[i])){
+            colorOrder.push('gray');
         }
         else if(answer.includes(activeWord[i])){
             // Yellow color. 
@@ -110,6 +115,8 @@ function setColors(){
         else {
             colorOrder.push('gray');
         }
+
+        usedLetters.push(activeWord[i]);
     }
 
     // Loop through children of active row and set the colors. 
