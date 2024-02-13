@@ -1,16 +1,21 @@
-import { words } from './valid-wordle-words.js';
+import { words } from './valid-words.js';
+import { answers } from './answers.js';
 
 var activeRow = document.getElementById('row1');
 var info = document.getElementById('info');
 
 var activeWord = '     '; 
-var answer = 'SALET';
+var answer = getRandomWord().toUpperCase();
 var currentLetter = 0;
 var currentRow = 1;
 
-function setCharAt(str,index,chr) {
+function setCharAt(str, index, chr) {
     if(index > str.length-1) return str;
     return str.substring(0,index) + chr + str.substring(index+1);
+}
+
+function getRandomWord(){
+    return answers[Math.floor(Math.random() * answers.length)];
 }
 
 document.onkeydown = function (e) {
@@ -28,7 +33,6 @@ function handleKeyEvent(e) {
                 setColors();
             }
             else {
-                console.log('next row called');
                 setColors();
                 nextRow();
             }
