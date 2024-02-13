@@ -1,4 +1,4 @@
-import words from '../valid-wordle-words.json' assert { type: 'json' };
+import { words } from './valid-wordle-words.js';
 
 var activeRow = document.getElementById('row1');
 var info = document.getElementById('info');

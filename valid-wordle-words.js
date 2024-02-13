@@ -1,4 +1,4 @@
-[
+export var words = [
     "aahed",
     "aalii",
     "aapas",
