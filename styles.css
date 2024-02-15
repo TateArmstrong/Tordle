@@ -33,10 +33,20 @@ body, html {
     border: 3px solid chartreuse;
     border-radius: 5px;
     text-align: center;
-    font-size: 16pt;
+    font-size: 24pt;
     
-    margin: 0.75rem;
-    line-height: 3rem;
-    width: 3rem;
-    height: 3rem;
+    margin: 0.5rem;
+    line-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+@media screen and (max-width: 420px) {
+    .letter {
+        margin: 0.35rem;
+        line-height: 3rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 16pt;
+    }
 }
