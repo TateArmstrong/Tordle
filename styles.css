@@ -8,6 +8,7 @@ body, html {
     overflow: hidden;
     color: white;
     font-family: 'Poppins', sans-serif;
+    background-color: #1C292F;
 }
 
 .container {
@@ -16,9 +17,11 @@ body, html {
     justify-content: center;
     flex-direction: column;
     margin: auto;
-    width: 100%;
-    height: 100%;
-    background-color: #2e344d;
+    width: 414px;
+}
+
+#info {
+    margin: 0;
 }
 
 .row {
@@ -26,27 +29,97 @@ body, html {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin-bottom: 1rem;
 }
 
 .letter {
     color: white;
-    border: 3px solid chartreuse;
+    /*border: 3px solid chartreuse;*/
+    border: 3px solid #6BDE3B;
     border-radius: 5px;
     text-align: center;
     font-size: 24pt;
     
-    margin: 0.5rem;
+    margin-right: 1rem;
     line-height: 4rem;
     width: 4rem;
     height: 4rem;
 }
 
+.letter:last-child {
+    margin: 0;
+}
+
+.keyboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.keyboard_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.keyboard_row:last-child {
+    margin-bottom: 0;
+}
+
+#keyboard_row2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.key {
+	background: none;
+	color: inherit;
+	border: 3px solid #6BDE3B;
+    border-radius: 5px;
+	padding: 0;
+	font: inherit;
+    font-size: 18pt;
+	cursor: pointer;
+	outline: inherit;
+
+    margin-right: 0.25rem;
+    line-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.key:last-child {
+    margin: 0;
+}
+
 @media screen and (max-width: 420px) {
+    body, html {
+        display: inline;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        margin-top: 2rem;
+    }
+
     .letter {
-        margin: 0.35rem;
+        margin-right: 0.5rem;
         line-height: 3rem;
         width: 3rem;
         height: 3rem;
         font-size: 16pt;
+    }
+
+    .row {
+        margin-bottom: 0.5rem;
     }
 }
