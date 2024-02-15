@@ -22,6 +22,12 @@ document.onkeydown = function (e) {
     handleKeyEvent(e);
 };
 
+// TO-DO: Switch from onclick() attribute to DOM event listeners. 
+function keyButtonPressed(key){
+    document.dispatchEvent(new KeyboardEvent("keydown", {keyCode: key}));
+}
+window.keyButtonPressed = keyButtonPressed;
+
 function handleKeyEvent(e) {
     const input = String.fromCharCode(e.keyCode)
     info.innerText = '';
@@ -129,3 +135,5 @@ function setColors(){
         rowChildren[i].style.backgroundColor = colorOrder[i];
     }
 }
+
+
