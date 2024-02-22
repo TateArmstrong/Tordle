@@ -26,6 +26,7 @@ body, html {
 
 #info {
     margin: 0;
+    min-height: 37pt;
 }
 
 .row {
@@ -112,7 +113,6 @@ body, html {
     .container {
         width: 100%;
         margin: 0;
-        margin-top: 2rem;
     }
 
     .letter {
