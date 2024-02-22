@@ -111,19 +111,25 @@ function setColors(){
 
     // Set the color order of the word. 
     for(var i = 0; i < activeWord.length; i++){
+        
+        var keyButton = document.getElementById('key' + activeWord[i]);
 
         if(activeWord[i] === answer[i]){
             colorOrder.push('green');
+            keyButton.style['background-color'] = 'green';
         }
         else if(usedLetters.includes(activeWord[i])){
             colorOrder.push('gray');
+            keyButton.style['background-color'] = 'gray';
         }
         else if(answer.includes(activeWord[i])){
             // Yellow color. 
             colorOrder.push('#afaf01');
+            keyButton.style['background-color'] = '#afaf01';
         }
         else {
             colorOrder.push('gray');
+            keyButton.style['background-color'] = 'gray';
         }
 
         usedLetters.push(activeWord[i]);
